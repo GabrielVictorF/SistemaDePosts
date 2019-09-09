@@ -1,0 +1,27 @@
+=  render template: 'navbar/index'
+
+.container
+  .row
+    .col-12
+      %h1 Feed de publicações
+  .row
+    .col-12
+      %button.btn.btn-secondary.btn-lg.btn-block{:type => "button"}=	link_to 'Novo post', new_post_path
+  .row
+    .col-12
+      - @posts.each do |post|
+        .card.text-center
+          .card-body
+            %h5.card-title User aqui
+            %h6.card-subtitle.mb-2.text-muted=	post.created_at
+            %p.card-text=	post.conteudo
+            %a.card-link{:href => ""} Comentar
+            %a.card-link{:href => "#"} Classificar
+            %a.card-link= link_to 'Editar', edit_post_path(post)
+            %a.card-link=	link_to 'Visualizar', post_path(post)
+            %a.card-link= link_to 'Deletar', post_path(post),           |
+          method: :delete, data: { confirm: 'Tem certeza?' } |
+
+
+
+

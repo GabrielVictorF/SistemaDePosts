@@ -1,0 +1,37 @@
+=  render template: 'navbar/index'
+
+.container
+  .row
+    .col-12
+      %p
+        Detalhes do post
+        = @post.id
+  .row
+    .col-12
+      .card.text-center
+        .card-body
+          %h5.card-title User aqui
+          %h6.card-subtitle.mb-2.text-muted=	@post.created_at
+          %p.card-text=	@post.conteudo
+          %a.card-link= link_to 'Editar', edit_post_path(@post)
+          %a.card-link= link_to 'Deletar', post_path(@post),           |
+        method: :delete, data: { confirm: 'Tem certeza?' } |
+
+    .col-12
+      = form_with model: @post, local: true do |form|
+        = form.label :Comentário
+        %br/
+        = form.text_area :comentarios_post
+        %input{:type => "text", :name => "comentarios_post[]comentario[]"}
+        = form.submit
+  .row
+    .col-12
+      - @post.comentarios_post.each do |comentario|
+        %p  comentario
+
+  .row
+    .col-12
+      = link_to 'Home Page', posts_path
+
+
+
