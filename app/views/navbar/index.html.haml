@@ -1,24 +1,26 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %nav.navbar.navbar-light.bg-light
-  %span.navbar-brand.mb-0.h1
-    - if user_signed_in?
-      Logado como:
-      = current_user.email
-      = current_user.id
-      %span.navbar-brand.mb-0.h1
-        %a.nav-link
-          = link_to 'Sair', destroy_user_session_path, method: :delete
+  - if user_signed_in?
+    %span.navbar-brand.mb-0.h1
+      %a.nav-brand
+        = current_user.email
+        %a(href = "/users/sign_out" data-method = "delete")  
+          Sair
+          %i.material-icons.md-36 exit_to_app
           
   #navbarSupportedContent.collapse.navbar-collapse
-    %ul.navbar-nav.mr-auto
+    %ul.navbar-nav.mr-auto.nav-fill 
       %li.nav-item
         %a.nav-link{:href => "/"}
           Página inicial
-          %span.sr-only (current)
+          %i.material-icons home
       %li.nav-item
-        %a.nav-link{:href => "/posts/new"} Nova postagem
+        %a.nav-link{:href => "/posts/new"} 
+          Nova postagem
+          %i.material-icons post_add
       %li.nav-item
-        %a.nav-link{:href => "/users/edit"} Meu perfil
+        %a.nav-link{:href => "/users/edit"} 
+          Meu perfil
+          %i.material-icons supervised_user_circle
           
          
 

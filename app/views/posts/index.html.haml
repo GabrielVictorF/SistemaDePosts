@@ -3,10 +3,13 @@
 .container
   .row
     .col-12
-      %h1 Feed de publicações
+      %h3.text-center Feed de publicações
   .row
-    .col-12
-      %button.btn.btn-secondary.btn-lg.btn-block{:type => "button"}=	link_to 'Novo post', new_post_path
+    .col-12.text-center
+      %a{:href => "/posts/new"}
+        Nova postagem
+        %i.material-icons	touch_app
+      %p
   .row
     .col-12
       - @posts.each do |post|
