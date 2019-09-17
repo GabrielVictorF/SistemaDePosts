@@ -1,7 +1,12 @@
 =  render template: 'navbar/index'
 
-%h1 Editando post 
-
-= render 'formulario'
-
-= link_to 'Home Page', posts_path 
+%container
+    .row
+        .col-12.text-center
+            %h1 Editando post
+    .row
+        .col-12.text-center
+            = render 'formulario'
+    .row
+        .col-12.text-center
+            = link_to 'Home Page', posts_path 

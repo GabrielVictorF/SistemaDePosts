@@ -1,20 +1,5 @@
-= form_with model: @post, local: true do |form|
-  - if @post.errors.any?
-    #error_explanation
-      .alert.alert-danger
-        %strong  OPS!	
-        = pluralize(@post.errors.count, "erro")
-        impedindo este post de ser salvo:
-      %ul.list-group
-        - @post.errors.full_messages.each do |msg|
-          %li.list-group-item= msg
-    %br
-  = form.label 'O que você está pensando?'
-  %br/
-  = form.text_area :conteudo
-  
-  %input{:type => "hidden", :id => "user_id", :name => "post[user_id]", :value => "1"}
-
-  %p
-  %p
-    = form.submit
+= simple_form_for @post do |f|
+  = f.error_notification
+  = f.input :conteudo, label: 'O que você está pensando?'
+  = f.button :submit, class: "btn btn-primary"
+  = f.button :button, "Cancel", type: "reset", class: "btn btn-outline-secondary", label: 'Cancelar'
